@@ -1,0 +1,25 @@
+# Local infrastructure for the FIFA World Cup Intelligence Platform.
+# Only PostgreSQL is required. The backend and frontend run directly on the host
+# during development (see README). Host port 5544 is used to avoid colliding with
+# other local Postgres instances.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: fifa_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: fifa
+      POSTGRES_PASSWORD: fifa
+      POSTGRES_DB: fifa
+    ports:
+      - "5544:5432"
+    volumes:
+      - fifa_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fifa -d fifa"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  fifa_pgdata:

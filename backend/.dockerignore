@@ -1,0 +1,13 @@
+# Keep the image small; never copy local secrets or envs.
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+tests/
+alembic/
+.env
+.env.*
+# NOTE: app/data/fifa.db IS intentionally included (baked-in dataset).

@@ -1,0 +1,26 @@
+[project]
+name = "fifa-wc-backend"
+version = "0.1.0"
+description = "FIFA World Cup Intelligence Platform - backend API"
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+extend-exclude = ["alembic/versions", "venv", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "W"]
+ignore = [
+    "B008",   # FastAPI uses function calls in defaults (Depends/Query)
+    "UP046",  # keep Generic[T] base for pydantic v2 compatibility
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Curated reference data uses long one-line literals by design.
+"app/ingestion/reference_data.py" = ["E501"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

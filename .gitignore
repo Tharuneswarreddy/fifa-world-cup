@@ -1,0 +1,43 @@
+# ---- Secrets / env ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---- Node / frontend ----
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.local
+
+# ---- Data (large / generated) ----
+data/raw/
+data/cache/
+*.sqlite3
+*.db
+# ...except the committed, baked-in production dataset (shipped in the image):
+!backend/app/data/
+!backend/app/data/fifa.db
+
+# ---- Editor / OS ----
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ---- Logs ----
+*.log
+logs/

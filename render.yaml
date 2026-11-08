@@ -1,0 +1,24 @@
+# Render Blueprint for the backend API (free tier, Docker, SQLite baked in).
+# In Render: New -> Blueprint -> pick this repo. No database add-on needed.
+services:
+  - type: web
+    name: fifa-wc-api
+    runtime: docker
+    repo: # filled automatically when you connect the repo
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        value: sqlite+aiosqlite:////app/app/data/fifa.db
+      # Set this to your deployed frontend URL after Vercel is live:
+      - key: CORS_ORIGINS
+        sync: false
+      # Allow Vercel preview deployments automatically:
+      - key: CORS_ORIGIN_REGEX
+        value: https://.*\.vercel\.app
