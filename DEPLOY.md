@@ -14,22 +14,25 @@ free pieces:
 Total cost: **$0**. Only caveat: Render's free backend **sleeps after ~15 min idle** and takes
 ~50s to wake on the next request (the frontend shows loading states meanwhile).
 
+> ⚠️ **Use your PERSONAL GitHub account for every step below.** Creating the repo, and the
+> "Sign in with GitHub" buttons on **both Render and Vercel**, all authenticate through GitHub —
+> so whichever account your browser is logged into is the one that gets used. If you are signed
+> into a work/office GitHub, sign out first or use a private/incognito window on your personal
+> account. (Your local commits already use your personal email, `tharuneswar.g@gmail.com`.)
+
 ---
 
-## 0. One-time: put the code on GitHub
+## 0. One-time: put the code on your personal GitHub
 
-From the project root:
+The repo is **already initialized and committed** for you (author `tharuneswar.g@gmail.com`), so
+you only need to create a repo on your **personal** GitHub and push to it.
 
-```bash
-git init
-git add -A
-git commit -m "FIFA World Cup platform"
-```
-
-Create an empty repo on GitHub (github.com → New repository), then:
+1. On your **personal** github.com, click **New repository** (e.g. `fifa-world-cup`). Create it
+   **empty** — no README, license, or .gitignore.
+2. From the project root, add it as the remote and push:
 
 ```bash
-git remote add origin https://github.com/<your-username>/<repo>.git
+git remote add origin https://github.com/<your-personal-username>/<repo>.git
 git branch -M main
 git push -u origin main
 ```
@@ -41,7 +44,7 @@ git push -u origin main
 
 ## 1. Backend → Render (free)
 
-1. Sign in at https://render.com with your GitHub account.
+1. Sign in at https://render.com with your **personal** GitHub account.
 2. **New → Blueprint** → select your repo. Render reads [`render.yaml`](render.yaml) and creates a
    free Docker web service named `fifa-wc-api`.
    - *(Manual alternative: New → Web Service → your repo → Root Directory `backend`, Runtime
@@ -55,7 +58,7 @@ Leave `CORS_ORIGINS` empty for now — you'll set it in step 3.
 
 ## 2. Frontend → Vercel (free)
 
-1. Sign in at https://vercel.com with GitHub → **Add New → Project** → import the same repo.
+1. Sign in at https://vercel.com with your **personal** GitHub → **Add New → Project** → import the same repo.
 2. Set **Root Directory** to `frontend`. Vercel auto-detects Vite (build `npm run build`,
    output `dist`); [`vercel.json`](frontend/vercel.json) handles client-side routing.
 3. Under **Environment Variables**, add:
