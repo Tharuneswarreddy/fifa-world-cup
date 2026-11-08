@@ -18,24 +18,27 @@ Total cost: **$0**. Only caveat: Render's free backend **sleeps after ~15 min id
 > "Sign in with GitHub" buttons on **both Render and Vercel**, all authenticate through GitHub —
 > so whichever account your browser is logged into is the one that gets used. If you are signed
 > into a work/office GitHub, sign out first or use a private/incognito window on your personal
-> account. (Your local commits already use your personal email, `tharuneswar.g@gmail.com`.)
+> account. (Your local commits are set to your personal GitHub identity via a
+> `users.noreply.github.com` address, so your real email is never exposed.)
 
 ---
 
 ## 0. One-time: put the code on your personal GitHub
 
-The repo is **already initialized and committed** for you (author `tharuneswar.g@gmail.com`), so
-you only need to create a repo on your **personal** GitHub and push to it.
+The repo is **already initialized and committed** under your personal GitHub identity
+(`Tharuneswarreddy`), and the remote is already pointed at your personal account. You just need to
+create the empty repo on GitHub and push.
 
-1. On your **personal** github.com, click **New repository** (e.g. `fifa-world-cup`). Create it
-   **empty** — no README, license, or .gitignore.
-2. From the project root, add it as the remote and push:
+1. On your **personal** github.com (user `Tharuneswarreddy`), click **New repository**, name it
+   **`fifa-world-cup`**, and create it **empty** — no README, license, or .gitignore.
+2. From the project root, push:
 
 ```bash
-git remote add origin https://github.com/<your-personal-username>/<repo>.git
-git branch -M main
 git push -u origin main
 ```
+
+> The remote is preset to `https://github.com/Tharuneswarreddy/fifa-world-cup.git` on branch `main`.
+> To use a different name: `git remote set-url origin https://github.com/Tharuneswarreddy/<name>.git`.
 
 > The `.gitignore` already excludes `backend/.env` (your API key) and `node_modules/`, and
 > **includes** the baked-in `backend/app/data/fifa.db`.
